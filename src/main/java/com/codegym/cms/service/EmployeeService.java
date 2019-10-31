@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface EmployeeService {
     Page<Employee> findAll(Pageable pageable);
-    Page<Employee> findAllByNameDepartment (String name, Pageable pageable);
+    Page<Employee> findAllByName (String name, Pageable pageable);
     Employee findById(Long id);
     void save(Employee employee);
     void remove(Long id);

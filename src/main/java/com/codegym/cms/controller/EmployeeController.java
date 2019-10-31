@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
@@ -90,10 +91,11 @@ public ModelAndView saveEmployee(@Validated @ModelAttribute("employeeForm") Empl
 
 }
     @GetMapping("/employees")
-    public ModelAndView listEmployees(@RequestParam("s")Optional<String> s, @PageableDefault(value = 3)Pageable pageable){
+    public ModelAndView listEmployees(@RequestParam("s")Optional<String> s, @PageableDefault(value = 3, sort = "salary")Pageable pageable){
         Page<Employee> employees;
         if(s.isPresent()){
-            employees = employeeService.findAllByNameDepartment(s.get(),pageable);
+          employees = employeeService.findAllByName(s.get(),pageable);
+
         }else {
             employees = employeeService.findAll(pageable);
         }
@@ -115,18 +117,20 @@ public ModelAndView saveEmployee(@Validated @ModelAttribute("employeeForm") Empl
     }
     @PostMapping("/edit-employee")
     public ModelAndView updateEmployee(@ModelAttribute("employee")EmployeeForm employeeForm){
-        MultipartFile multipartFile=employeeForm.getAvatar();
-        String fileName=multipartFile.getOriginalFilename();
-        String fileUpload=env.getProperty("file_upload").toString();
-        try {
-            FileCopyUtils.copy(employeeForm.getAvatar().getBytes(),new File(fileUpload+fileName));
-        }catch (IOException ex){
-            ex.printStackTrace();
-        }
+       Long id = employeeForm.getId();
+        String name =employeeForm.getName();
+        LocalDate birthDate = employeeForm.getBirthDate();
+        String  address = employeeForm.getAddress();
+        String fileName = employeeForm.getAvatar().getOriginalFilename();
+        Double salary = employeeForm.getSalary();
+        Department department = employeeForm.getDepartment();
 
-        employeeService.edit(employeeForm,fileName);
+        Employee employee = new Employee(id,name,birthDate,address,fileName,salary,department);
+
+        employeeService.save(employee);
+
         ModelAndView modelAndView = new ModelAndView("/employee/edit");
-        modelAndView.addObject("employees",new EmployeeForm());
+        modelAndView.addObject("employees", employee);
         modelAndView.addObject("message","Employee updated successfully");
                 return modelAndView;
     }

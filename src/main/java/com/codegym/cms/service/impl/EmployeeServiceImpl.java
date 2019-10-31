@@ -21,10 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> findAllByNameDepartment(String name, Pageable pageable) {
-        return employeeRepository.findAllByNameAndDepartment(name, pageable);
+    public Page<Employee> findAllByName(String name, Pageable pageable) {
+        return employeeRepository.findAllByName(name, pageable);
     }
-
 
     @Override
     public Employee findById(Long id) {
