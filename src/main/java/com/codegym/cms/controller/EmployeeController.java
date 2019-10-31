@@ -94,7 +94,7 @@ public ModelAndView saveEmployee(@Validated @ModelAttribute("employeeForm") Empl
     public ModelAndView listEmployees(@RequestParam("s")Optional<String> s, @PageableDefault(value = 10, sort = "salary")Pageable pageable){
         Page<Employee> employees;
         if(s.isPresent()){
-          employees = employeeService.findAllByName(s.get(),pageable);
+          employees = employeeService.findAllByDepartmentName(s.get(),pageable);
 
         }else {
             employees = employeeService.findAll(pageable);

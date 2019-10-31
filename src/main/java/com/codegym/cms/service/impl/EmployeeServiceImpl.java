@@ -20,10 +20,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findAll(pageable);
     }
 
-    @Override
-    public Page<Employee> findAllByName(String name, Pageable pageable) {
-        return employeeRepository.findAllByName(name, pageable);
-    }
+
+
+
 
     @Override
     public Employee findById(Long id) {
@@ -57,5 +56,10 @@ employeeRepository.delete(id);
         employeeObj.setId(employeeForm.getId());
 
         employeeRepository.save(employeeObj);
+    }
+
+    @Override
+    public Page<Employee> findAllByDepartmentName(String name, Pageable pageable) {
+        return employeeRepository.findAllByDepartmentName(name, pageable);
     }
 }

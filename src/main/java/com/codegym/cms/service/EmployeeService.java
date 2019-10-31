@@ -8,10 +8,12 @@ import org.springframework.data.domain.Pageable;
 
 public interface EmployeeService {
     Page<Employee> findAll(Pageable pageable);
-    Page<Employee> findAllByName (String name, Pageable pageable);
+
     Employee findById(Long id);
     void save(Employee employee);
     void remove(Long id);
     Iterable<Employee> findAllByDepartment(Department department);
     void edit(EmployeeForm employeeForm,String image);
+
+    Page<Employee> findAllByDepartmentName(String s, Pageable pageable);
 }
