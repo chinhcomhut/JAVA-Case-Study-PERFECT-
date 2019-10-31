@@ -64,7 +64,7 @@ public class DepartmentController {
         }
     }
 
-    @PostMapping("/edit-departments")
+    @PostMapping("/edit-department")
     public ModelAndView updateProvince(@ModelAttribute("department") Department department) {
         departmentService.save(department);
         ModelAndView modelAndView = new ModelAndView("/department/edit");
