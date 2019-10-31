@@ -39,7 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/Thi het Modul 2/MD2_Thi_Ket_Thuc_Module-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,6 +156,7 @@
       <workItem from="1572483638140" duration="13258000" />
       <workItem from="1572505309801" duration="15043000" />
       <workItem from="1572536288789" duration="6088000" />
+      <workItem from="1572545638639" duration="2370000" />
     </task>
     <servers />
   </component>

@@ -86,7 +86,7 @@ public class DepartmentController {
         }
     }
     @PostMapping("/delete-department")
-    public String deleteProvince(@ModelAttribute("province") Department department){
+    public String deleteProvince(@ModelAttribute("department") Department department){
         departmentService.remove(department.getId());
         return "redirect:departments";
     }

@@ -134,7 +134,7 @@ public ModelAndView saveEmployee(@Validated @ModelAttribute("employeeForm") Empl
         modelAndView.addObject("message","Employee updated successfully");
                 return modelAndView;
     }
-    @GetMapping("/delete-employee")
+    @GetMapping("/delete-employee/{id}")
     public ModelAndView showDeleteForm(@PathVariable Long id){
         Employee employee = employeeService.findById(id);
         if(employee !=null){
